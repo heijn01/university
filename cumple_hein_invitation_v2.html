@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cumple Hein / Goleada Alemana</title>
+  <style>
+    :root{--bg:#07111f;--text:#f6f7fb;--muted:rgba(246,247,251,.72);--gold:#f6c945;--line:rgba(255,255,255,.12);--shadow:0 24px 60px rgba(0,0,0,.38);--radius:28px}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:radial-gradient(circle at top left,rgba(91,188,255,.18),transparent 28%),radial-gradient(circle at top right,rgba(53,208,127,.14),transparent 24%),radial-gradient(circle at bottom center,rgba(246,201,69,.14),transparent 24%),linear-gradient(180deg,#050914 0%,var(--bg) 40%,#04070d 100%);min-height:100vh;overflow-x:hidden}
+    .wrap{width:min(1200px,calc(100% - 32px));margin:0 auto;padding:18px 0 34px}
+    .hero{position:relative;border:1px solid var(--line);background:linear-gradient(135deg,rgba(255,255,255,.11),rgba(255,255,255,.04));backdrop-filter:blur(18px);border-radius:40px;box-shadow:var(--shadow);overflow:hidden;padding:20px}
+    .flags{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+    .flag-box{height:92px;border-radius:24px;overflow:hidden;border:1px solid var(--line);box-shadow:0 16px 30px rgba(0,0,0,.22);position:relative}
+    .flag-box::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.18) 50%,transparent 100%);mix-blend-mode:soft-light;animation:sheen 4s linear infinite}
+    .de{background:linear-gradient(180deg,#000 0 33%,#dd0000 33% 66%,#ffce00 66% 100%)}
+    .ci{background:linear-gradient(90deg,#f77f00 0 33%,#ffffff 33% 66%,#009e60 66% 100%)}
+    .waving{position:absolute;inset:0;animation:wave 3.4s ease-in-out infinite;transform-origin:center}
+    @keyframes wave{0%,100%{transform:translateX(0) skewX(0deg)}50%{transform:translateX(4px) skewX(-1.3deg)}}
+    @keyframes sheen{0%{transform:translateX(-70%)}100%{transform:translateX(70%)}}
+    .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:stretch}
+    .panel{border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.05));border-radius:var(--radius);padding:26px;position:relative;overflow:hidden}
+    .panel::after{content:"";position:absolute;inset:auto -20% -35% auto;width:220px;height:220px;background:radial-gradient(circle,rgba(246,201,69,.16),transparent 65%);pointer-events:none}
+    .kicker{display:inline-flex;gap:10px;align-items:center;padding:10px 14px;border-radius:999px;background:rgba(246,201,69,.12);color:#ffe48b;border:1px solid rgba(246,201,69,.25);letter-spacing:.14em;text-transform:uppercase;font-size:12px;font-weight:700}
+    h1{font-size:clamp(40px,6.5vw,80px);line-height:.92;margin:18px 0 14px;letter-spacing:-.05em}
+    .lead{font-size:clamp(18px,2.1vw,24px);line-height:1.45;color:var(--muted);max-width:42ch;margin:0 0 24px}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+    .stat{padding:18px;border-radius:22px;background:rgba(255,255,255,.06);border:1px solid var(--line)}
+    .stat .label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+    .stat .value{font-size:18px;font-weight:700;margin-top:8px}
+    .accent{background:linear-gradient(90deg,#fff,#cde8ff 45%,#ffe48b 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .side{display:grid;gap:22px}
+    .badge{display:inline-flex;padding:10px 14px;border-radius:999px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--muted)}
+    .match{display:grid;gap:16px}
+    .teams{display:flex;gap:14px;align-items:center;justify-content:space-between}
+    .team{flex:1;padding:18px;border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));border:1px solid var(--line);text-align:center}
+    .team strong{display:block;font-size:20px;margin-bottom:8px}
+    .score{font-size:34px;font-weight:900;color:var(--gold);min-width:90px;text-align:center;text-shadow:0 8px 26px rgba(246,201,69,.24)}
+    .info-list{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+    .info-list li{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--muted);line-height:1.45}
+    .ico{width:22px;height:22px;flex:0 0 22px;margin-top:2px;display:inline-flex;align-items:center;justify-content:center;font-style:normal}
+    .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px}
+    a.btn{text-decoration:none;color:#07111f;background:linear-gradient(135deg,#ffffff,#dff2ff);padding:14px 18px;border-radius:16px;font-weight:800;display:inline-flex;align-items:center;gap:10px;box-shadow:0 14px 34px rgba(255,255,255,.12)}
+    a.btn.secondary{color:var(--text);background:rgba(255,255,255,.06);border:1px solid var(--line);box-shadow:none}
+    .footer-note{margin-top:18px;padding:18px 20px;border-radius:20px;background:linear-gradient(90deg,rgba(53,208,127,.14),rgba(246,201,69,.12),rgba(255,90,106,.12));border:1px solid rgba(255,255,255,.12);font-weight:700;line-height:1.45}
+    .track{margin-top:22px;padding:18px;border-radius:22px;background:rgba(255,255,255,.05);border:1px solid var(--line)}
+    .sc-credit{font-size:10px;color:#cccccc;line-break:anywhere;word-break:normal;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-family:Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight:100;margin-top:10px}
+    .sc-credit a{color:#cccccc;text-decoration:none}
+    iframe{width:100%;border:0;border-radius:16px;overflow:hidden;display:block}
+    .small{color:var(--muted);font-size:14px;line-height:1.5}
+    .brandline{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+    .pill{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--muted);font-size:13px}
+    .warning{margin-top:22px;padding:22px 24px;border-radius:22px;background:linear-gradient(135deg,rgba(255,90,106,.18),rgba(246,201,69,.13));border:2px solid rgba(255,90,106,.35)}
+    .warning h2{margin:0 0 10px;font-size:24px;letter-spacing:-.03em}
+    .warning p{margin:0;color:var(--text);font-weight:700;line-height:1.6;font-size:18px}
+    @media(max-width:940px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.hero{padding:16px}.panel{padding:20px}.flags{gap:10px}.flag-box{height:72px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="flags">
+        <div class="flag-box de"><div class="waving"></div></div>
+        <div class="flag-box ci"><div class="waving"></div></div>
+      </div>
+      <div class="brandline">
+        <span class="kicker">🎉 Birthday Watch Party · Germany Match</span>
+        <span class="pill">Costa Rica Time · 13:30–16:00</span>
+      </div>
+      <div class="grid">
+        <div class="panel">
+          <h1>Hein 31 años,<br><span class="accent">partido mundial</span></h1>
+          <p class="lead">No hay mejor forma de celebrar mi cumpleaños 31 que yendo al Bar <strong>“Clandestino”</strong> en Calle Camusa, para ver el partido de Alemania rodeado de familia y amigos.</p>
+          <div class="stats">
+            <div class="stat"><div class="label">Fecha / hora</div><div class="value">Mañana, 13:30h a 16:00h</div></div>
+            <div class="stat"><div class="label">Lugar</div><div class="value">Bar “Clandestino”</div></div>
+            <div class="stat"><div class="label">Código del plan</div><div class="value">Fútbol + cumple + Heineken</div></div>
+          </div>
+          <div class="cta">
+            <a class="btn" href="https://maps.app.goo.gl/McuJXUgwVJyxwW5L9?g_st=ic" target="_blank" rel="noopener noreferrer"><i class="ico">📍</i> Ver ubicación</a>
+            <a class="btn secondary" href="https://wa.me/31638995102" target="_blank" rel="noopener noreferrer"><i class="ico">💬</i> WhatsApp</a>
+            <a class="btn secondary" href="sms:+31638995102"><i class="ico">✉️</i> iMessage</a>
+          </div>
+          <div class="footer-note">Alemania va a ganar 5:0 contra Costa de Marfil — y me haría profundamente feliz contar con su presencia.</div>
+          <p class="small" style="margin-top:16px;">No hay nada que me haga más feliz que tener a mi familia y a mis amigos cerca en un día tan especial.</p>
+        </div>
+        <div class="side">
+          <div class="panel match">
+            <span class="badge">⚽ Matchday Forecast</span>
+            <div class="teams">
+              <div class="team"><strong>🇩🇪 Alemania</strong><span>Lista para celebrar</span></div>
+              <div class="score">5 : 0</div>
+              <div class="team"><strong>🇨🇮 Costa de Marfil</strong><span>Partido en pantalla</span></div>
+            </div>
+            <ul class="info-list">
+              <li><i class="ico">📍</i><span><strong>Dirección:</strong> Bar “Clandestino”, Calle Camusa.</span></li>
+              <li><i class="ico">🕜</i><span><strong>Hora de llegada:</strong> entre 13:30 y 16:00, hora de Costa Rica.</span></li>
+              <li><i class="ico">☎️</i><span><strong>Contacto:</strong> +31 638 995 102 por WhatsApp o iMessage.</span></li>
+            </ul>
+          </div>
+          <div class="panel">
+            <span class="badge">🎵 Música de fondo</span>
+            <div class="track">
+              <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A923342293&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+              <div class="sc-credit"><a href="https://soundcloud.com/lmfao-biggest-fan" title="EMINEM official" target="_blank">EMINEM official</a> · <a href="https://soundcloud.com/lmfao-biggest-fan/born-to-be-alive" title="Born to Be Alive" target="_blank">Born to Be Alive</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="warning">
+        <h2>⚠️ Aviso importante</h2>
+        <p>No se permitirá la entrada a nadie que ande camiseta de Costa de Marfil o de Argentina. ¡Los quiero mucho!</p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
